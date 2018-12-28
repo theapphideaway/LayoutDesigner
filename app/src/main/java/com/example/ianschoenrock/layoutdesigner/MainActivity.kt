@@ -82,15 +82,13 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun isExternalStorageWritable(): Boolean {
+    private fun isExternalStorageWritable(): Boolean {
         val state = Environment.getExternalStorageState()
-        return if (Environment.MEDIA_MOUNTED == state) {
-            true
-        } else false
+        return Environment.MEDIA_MOUNTED == state
     }
 
 
-    fun getDocumentStoragePath(): File {
+    private fun getDocumentStoragePath(): File {
         // Get the directory for the user's public documents directory.
         val path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)
         if (!path.mkdirs()) {
@@ -100,22 +98,22 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun getFilename(): File {
+    private fun getFilename(): File {
         fileToReadAndWrite = File(getDocumentStoragePath(), filename)
         return fileToReadAndWrite as File
     }
 
-    fun isFileWritable(file: File): Boolean {
+    private fun isFileWritable(file: File): Boolean {
         return if (!file.canWrite()) {
             file.setWritable(true)
         } else file.canWrite()
     }
 
 
-    fun writeToFile(textfile: File) {
+    private fun writeToFile(textFile: File) {
         try {
 
-            val fos = FileOutputStream(textfile)
+            val fos = FileOutputStream(textFile)
             fos.write("Hello World I'm writing to a file".toByteArray())
             fos.close()
             Toast.makeText(this@MainActivity, "Finish writing...", Toast.LENGTH_SHORT).show()
