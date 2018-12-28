@@ -1,5 +1,6 @@
 package com.example.ianschoenrock.layoutdesigner
 
+import android.Manifest
 import android.content.Context
 import android.hardware.Sensor
 import android.support.v7.app.AppCompatActivity
@@ -16,9 +17,14 @@ import java.io.FileOutputStream
 import java.io.IOException
 import java.nio.file.Files.isDirectory
 import java.nio.file.Files.exists
+import android.Manifest.permission
+import android.Manifest.permission.SEND_SMS
+import android.content.pm.PackageManager
+import android.support.v4.app.ActivityCompat
+import android.util.Log
 
 
-private val filename = "CashMoney.txt"
+private val filename = "DangerousVersion3.txt"
 var stringBuffer: StringBuffer? = null
 var fileToReadAndWrite: File? = null
 
@@ -35,8 +41,25 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
+        val PERMISSION_REQUEST_CODE = 1
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+
+            if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+
+                Log.d("permission", "permission denied to SEND_SMS - requesting it")
+                val permissions = arrayOf<String>(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+
+                requestPermissions(permissions, PERMISSION_REQUEST_CODE)
+
+            }
+        }
+
+
+
+        button.setOnClickListener {
             if (isExternalStorageWritable()) {
-                if (filesDir.exists() ) {
+                if (filesDir.exists()) {
                     if (isFileWritable(filesDir)) {
                         writeToFile(getFilename())
                     } else {
@@ -49,7 +72,9 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this@MainActivity, "Storage not writable.", Toast.LENGTH_LONG).show()
 
 
+            }
         }
+
 
 
         ///storage/emulated/0/myfile
