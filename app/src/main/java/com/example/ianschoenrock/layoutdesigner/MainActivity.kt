@@ -3,6 +3,7 @@ package com.example.ianschoenrock.layoutdesigner
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -32,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private inner class Callback : WebViewClient() {  //HERE IS THE MAIN CHANGE.
+    private inner class Callback : WebViewClient() {  
 
         override fun shouldOverrideUrlLoading(view: WebView, url: WebResourceRequest): Boolean {
             return false
