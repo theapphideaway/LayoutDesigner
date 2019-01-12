@@ -1,3 +1,5 @@
+
+
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                              xmlns:app="http://schemas.android.com/apk/res-auto"
                                              xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
@@ -5,40 +7,25 @@
                                              android:fitsSystemWindows="true">
 
 
-    <ProgressBar
-            style="?android:attr/progressBarStyle"
+    <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/progress_bar" android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.0"/>
-    <WebView
-            android:id="@+id/web_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/url_edit_text"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginTop="40dp"
-            app:layout_constraintTop_toBottomOf="@+id/url_edit_text"/>
-
-    <EditText
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/url_edit_text" app:layout_constraintStart_toStartOf="parent"
-            android:hint="URL"
-            android:layout_marginEnd="60dp"
-            app:layout_constraintEnd_toStartOf="@+id/search_button"
-            app:layout_constraintTop_toTopOf="parent"/>
-    <ImageButton
-            android:layout_width="60dp"
-            android:background="#1E90FF"
-            android:layout_height="37dp" app:srcCompat="@android:drawable/ic_menu_search"
-            android:id="@+id/search_button"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            android:id="@+id/text_name_edit_text"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent" android:hint="Enter File Title"/>
+    <Button
+            android:text="Read"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button2" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/content_text_view" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/text_name_edit_text"/>
 </android.support.constraint.ConstraintLayout >
